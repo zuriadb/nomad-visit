@@ -4,15 +4,16 @@ import {
   NotFoundException,
   UnauthorizedException,
 } from '@nestjs/common';
-import { UsersService } from 'src/modules/users/users.service';
 import { TokenService } from './token.service';
 import { PasswordService } from './password.service';
 import { AuthRegisterDto } from '../dto/register.dto';
 import { AuthLoginDto } from '../dto/login.dto';
 import { Response } from 'express';
-import { IUser } from 'src/modules/users/interfaces/user.interface';
+import { UsersService } from 'src/users/users.service';
 import { Role } from '../roles/roles.enum';
-import { UserEntity } from 'src/modules/users/entities/user.entity';
+import { IUser } from 'src/users/interfaces/user.interface';
+import { UserEntity } from 'src/users/entities/user.entity';
+
 
 @Injectable()
 export class AuthService {
@@ -61,7 +62,7 @@ export class AuthService {
       email: dto.email,
       passwordHash: hashedPassword,
       username: dto.username,
-      role: dto.role || Role.TEACHER,
+      role: dto.role || Role.User,
     });
 
     if (!createdUser) {
@@ -84,7 +85,7 @@ export class AuthService {
 
     response.clearCookie('Refresh');
 
-    await this.userService.update(userId, { refresh_token: null });
+    await this.userService.update(userId, { refresh_token: undefined });
     return;
   }
 
