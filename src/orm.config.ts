@@ -22,7 +22,7 @@ export const databaseConfig: DataSourceOptions = {
 
 export const migrationConfig: DataSourceOptions = {
   ...baseConfig,
-  host: 'localhost',
+  host: 'postgres',
 };
 
 const isRunningMigrations =

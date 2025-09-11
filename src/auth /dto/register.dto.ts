@@ -25,8 +25,8 @@ export class AuthRegisterDto {
   @IsStrongPassword()
   password: string;
 
-  @ApiProperty({ enum: ['teacher', 'admin'], required: true })
-  @IsEnum(['teacher', 'admin'])
+  @ApiProperty({ enum: ['user', 'admin'], required: true })
+  @IsEnum(['user', 'admin'])
   @IsNotEmpty()
   role: Role;
 }

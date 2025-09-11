@@ -9,6 +9,7 @@ import { JwtRefreshAuthGuard } from '../guards/jwt-refresh.guard';
 import { User } from 'src/users/decorators/user.decorator';
 import { IUser } from 'src/users/interfaces/user.interface';
 
+@ApiBearerAuth()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -28,7 +29,6 @@ export class AuthController {
     return this.authService.register(dto, response);
   }
 
-  @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Post('logout')
   async logout(
