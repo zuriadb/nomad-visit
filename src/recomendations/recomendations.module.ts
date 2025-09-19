@@ -9,8 +9,16 @@ import { GenerativeAiService } from './generative-ai.service';
   imports: [
     TypeOrmModule.forFeature([RecommendationEntity])
   ],
-  providers: [RecomendationsService , GenerativeAiService ],
-  controllers: [RecomendationsController],
-  exports: [RecomendationsService , GenerativeAiService ],
+  providers: [
+    RecomendationsService , 
+    GenerativeAiService 
+  ],
+  controllers: [
+    RecomendationsController
+  ],
+  exports: [
+    RecomendationsService , 
+    GenerativeAiService 
+  ],
 })
 export class RecomendationsModule {}
